@@ -1,13 +1,13 @@
-use bevy::prelude::*;
-use bevy_prototype_lyon::prelude::ShapePlugin;
+#![feature(drain_filter)]
 
-mod menu;
+use bevy::prelude::*;
+
+pub mod audio;
 pub mod game;
 pub mod utils;
 
 #[derive(Clone, Eq, PartialEq, Debug, Hash)]
 pub enum AppState {
-    Menu,
     Game,
     GameOver,
 }
@@ -22,10 +22,9 @@ fn setup_ui_camera(mut commands: Commands) {
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
-        .add_state(AppState::Menu)
-        .add_plugin(ShapePlugin)
+        .add_plugin(audio::AudioPlugin)
+        .add_state(AppState::Game)
         .add_startup_system(setup_ui_camera)
-        .add_plugin(menu::MenuPlugin)
         .add_plugin(game::GamePlugin)
         .run();
 }

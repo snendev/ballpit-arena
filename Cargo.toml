@@ -1,8 +1,34 @@
 [package]
-name = "fightbox"
+name = "ballpit_arena_game"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-bevy = { version = "0.6", features = ["dynamic"] }
 bevy_prototype_lyon = "0.4"
+pitch_calc = "0.12"
+
+[dependencies.bevy]
+version = "0.6"
+default-features = false
+features = [
+  "render",
+  "bevy_winit",
+  "bevy_gilrs",
+  "png",
+  "hdr",
+  "filesystem_watcher",
+  "x11",
+]
+
+[dependencies.bevy_kira_audio]
+version = "0.8.0"
+default-features = false
+features = ["ogg"]
+
+[dependencies.dasp]
+version = "0.11"
+default-features = false
+features = ["signal", "window"]
+
+[patch.crates-io]
+bevy_kira_audio = { path = './bevy_kira_audio' }

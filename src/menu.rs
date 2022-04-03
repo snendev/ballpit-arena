@@ -6,6 +6,7 @@ use crate::{AppState, utils::destroy_recursive};
 struct MainMenuRootNode;
 
 fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
+    let font = asset_server.load("fonts/FiraSans-Bold.ttf");
     // ui camera
     commands
         .spawn()
@@ -38,7 +39,7 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
                         text: Text::with_section(
                             "Play".to_string(),
                             TextStyle {
-                                font: asset_server.load("fonts/FiraSans-Bold.ttf"),
+                                font,
                                 font_size: 40.0,
                                 color: Color::rgb(0.9, 0.9, 0.9),
                             },
